@@ -28,6 +28,7 @@ export default async function handler(req, res) {
             email: mpp.email,
             party_name: mpp.party_name,
             district_name: mpp.district_name,
+            photo_url: mpp.photo_url
         });
     } catch (err) {
         res.status(500).json({ error: err.message });

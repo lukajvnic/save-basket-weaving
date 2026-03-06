@@ -4,6 +4,7 @@ BASE = "https://represent.opennorth.ca/postcodes/"
 POSTCODE = "M2J3M5"
 
 response = requests.get(f"{BASE}{POSTCODE}")
+print(response)
 
 if response.status_code != 200:
     quit()
