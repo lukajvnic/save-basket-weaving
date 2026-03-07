@@ -1,7 +1,7 @@
 import requests
 
 BASE = "https://represent.opennorth.ca/postcodes/"
-POSTCODE = "M2J3M5"
+POSTCODE = "N6H0E5"
 
 response = requests.get(f"{BASE}{POSTCODE}")
 print(response)
@@ -15,4 +15,5 @@ print(representatives[0]["name"])
 print(representatives[0]["email"])
 print(representatives[0]["party_name"])
 print(representatives[0]["district_name"])
+print(representatives[0]["photo_url"])
 
