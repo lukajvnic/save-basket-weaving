@@ -11,14 +11,15 @@ import './Preview.css'
 /**
  * @param {{ to: Representative[], cc: Representative[] }} props
  */
-function Preview({ to, cc, onRemoveTo, onRemoveCc, onAddTo, onAddCc, onSend }) {
+function Preview({ to, cc, onRemoveTo, onRemoveCc, onAddTo, onAddCc, onSend, school, name }) {
     const [subject, setSubject] = useState("");
     const [body, setBody] = useState("");
-    const bodyRef = useRef(null);
+    const [baseBody, setBaseBody] = useState("");
     const [removingTo, setRemovingTo] = useState(null);
     const [removingCc, setRemovingCc] = useState(null);
     const [toInput, setToInput] = useState("");
     const [ccInput, setCcInput] = useState("");
+    const bodyRef = useRef(null);
 
     function handleRemoveTo(index) {
         setRemovingTo(index);
@@ -43,8 +44,16 @@ function Preview({ to, cc, onRemoveTo, onRemoveCc, onAddTo, onAddCc, onSend }) {
 
         fetch('/body.txt')
             .then((res) => res.text())
-            .then((text) => setBody(text.trim()))
+            .then((text) => setBaseBody(text.trim()))
     }, [])
+
+    useEffect(() => {
+        if (!baseBody) return
+        let computed = baseBody
+        if (school) computed = `As a student at the ${school}, ${computed}`
+        if (name) computed = `${computed}\n\nSincerely,\n${name}`
+        setBody(computed)
+    }, [school, name, baseBody])
 
     useEffect(() => {
         if (bodyRef.current) {
@@ -62,7 +71,7 @@ function Preview({ to, cc, onRemoveTo, onRemoveCc, onAddTo, onAddCc, onSend }) {
             </div>
             <div className="email-area to">
                 <div className="email-area-text">
-                    To
+                    To: 
                 </div>
                 <div className="email-area-tags">
                     {to.map((politician, index) => (
@@ -95,7 +104,7 @@ function Preview({ to, cc, onRemoveTo, onRemoveCc, onAddTo, onAddCc, onSend }) {
             </div>
             <div className="email-area cc">
                 <div className="email-area-text">
-                    Cc
+                    Cc: 
                 </div>
                 <div className="email-area-tags">
                     {cc.map((politician, index) => (

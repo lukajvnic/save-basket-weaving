@@ -1,14 +1,17 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Preview from './components/Preview'
+import Input from './components/Input'
 import './App.css'
 
 function App() {
-  const [postalCode, setPostalCode] = useState('');
   // const [mppName, setMPPName] = useState('');
   // const [mppEmail, setMPPEmail] = useState('');
   // const [mppParty, setMPPParty] = useState('');
   // const [mppDistrict, setMPPDistrict] = useState('');
   // const [mppPhotoUrl, setMPPPhotoUrl] = useState(null);
+  const [school, setSchool] = useState('');
+  const [name, setName] = useState('');
+  const fetchedCodes = useRef(new Map());
   const [toMPPs, setToMPPs] = useState([
     {
       name: "Douggie",
@@ -21,6 +24,8 @@ function App() {
       photoUrl: "https://www.ola.org/sites/default/files/member/profile-photo/Nolan_Quinn_original.jpg"
     }
   ]);
+  const toMPPsRef = useRef(toMPPs);
+  toMPPsRef.current = toMPPs;
   const [ccMPPs, setCcMPPs] = useState([
     {
       name: "Marit Stiles",
@@ -35,13 +40,19 @@ function App() {
   ]);
 
   async function fetchMpp(code) {
+    const knownEmail = fetchedCodes.current.get(code);
+    if (knownEmail !== undefined) {
+      const stillPresent = toMPPsRef.current.some(m => m.email === knownEmail);
+      if (stillPresent) return;
+    }
     try {
       const res = await fetch(`/api/mpp?postal_code=${encodeURIComponent(code)}`)
       const data = await res.json()
       if (data.error) {
         throw new Error(data.error)
       } else {
-        setToMPPs([...toMPPs, {
+        fetchedCodes.current.set(code, data.email);
+        setToMPPs(prev => [...prev, {
           name: data.name,
           email: data.email,
           photoUrl: data.photo_url
@@ -64,7 +75,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="app">
       {/* <div>MPP Name: {mppName}</div>
       <div>MPP Email: {mppEmail}</div>
       <div>MPP Party: {mppParty}</div>
@@ -72,7 +83,7 @@ function App() {
       <img src={mppPhotoUrl} alt="MPP Photo" /> */}
 
       <div className="heading">
-        <h1>Save Basket Weaving</h1>
+        <h1>SAVE BASKET WEAVING</h1>
         <p>Doug Ford is moving to cut OSAP grants. Students have protested, but it will not be enough without directly pressuring local MPPs to publicly oppose the cuts.
           This site intends to reduce friction for speaking up and ultimately flood our politicians' inboxes, giving them no choice but to stand with us.
           We have CCed opposition members for accountability.
@@ -80,17 +91,14 @@ function App() {
       </div>
       <div className="wrapper">
         <div className="wrapper-left">
-          <input
-            type="text"
-            placeholder="Enter postal code"
-            onChange={(e) => setPostalCode(e.target.value)}
-          />
-          <button onClick={() => fetchMpp(postalCode)}>Get MPP</button>
+          <Input onGenerate={({ postalCode }) => fetchMpp(postalCode)} onSchoolChange={setSchool} onNameChange={setName} />
         </div>
         <div className="wrapper-right">
           <Preview
             to={toMPPs}
             cc={ccMPPs}
+            school={school}
+            name={name}
             onRemoveTo={(index) => setToMPPs(toMPPs.filter((_, i) => i !== index))}
             onRemoveCc={(index) => setCcMPPs(ccMPPs.filter((_, i) => i !== index))}
             onAddTo={(entry) => setToMPPs([...toMPPs, entry])}
@@ -99,8 +107,10 @@ function App() {
           />
         </div>
       </div>
-
-
+      <div className="footer">
+        <p>Email template credits to the <a href="https://wusa.ca/cuts/">Waterloo Undergraduate Student Association (WUSA)</a>
+        </p>
+      </div>
     </div>
   )
 }
