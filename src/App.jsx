@@ -72,8 +72,11 @@ function App() {
       <img src={mppPhotoUrl} alt="MPP Photo" /> */}
 
       <div className="heading">
-        <h1>title</h1>
-        <p></p>
+        <h1>Save Basket Weaving</h1>
+        <p>Doug Ford is moving to cut OSAP grants. Students have protested, but it will not be enough without directly pressuring local MPPs to publicly oppose the cuts.
+          This site intends to reduce friction for speaking up and ultimately flood our politicians' inboxes, giving them no choice but to stand with us.
+          We have CCed opposition members for accountability.
+        </p>
       </div>
       <div className="wrapper">
         <div className="wrapper-left">
