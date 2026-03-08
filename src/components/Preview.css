@@ -2,11 +2,16 @@
     position: relative;
     display: block;
     font-family: 'Figtree', sans-serif;
-    margin: 2rem;
     border: 1px solid #eee;
     border-radius: 1rem;
     padding: 2rem;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.main {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    margin: 1rem;
 }
 
 .dots {
@@ -41,6 +46,7 @@
     border-bottom: 1px solid #eee;
     padding-bottom: 1rem;
     margin-bottom: 1rem;
+    position: relative;
 }
 
 .email-area-text {
@@ -60,6 +66,7 @@
 }
 
 .tag {
+    position: relative;
     height: 24px;
     padding: 1px;
     display: inline-flex;
@@ -71,6 +78,37 @@
     margin-top: 0.15rem;
     margin-bottom: 0.15rem;
     animation: pop-in 200ms ease forwards;
+    cursor: pointer;
+}
+
+.tag-tooltip {
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 150ms ease;
+}
+
+.tag-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #333;
+}
+
+.tag:hover .tag-tooltip {
+    opacity: 1;
 }
 
 @keyframes pop-in {
@@ -111,6 +149,12 @@
     }
 }
 
+.email-area-tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
 .tag-input {
     border: none;
     outline: none;
@@ -121,6 +165,7 @@
     margin: 0;
     height: 24px;
     min-width: 100px;
+    flex: 1;
 }
 
 .tag-text {
@@ -136,6 +181,7 @@
 
 .subject {
     display: flex;
+    position: relative;
     margin-bottom: 1rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid #eee;
@@ -157,6 +203,10 @@
     width: 100%;
 }
 
+.body {
+    position: relative;
+}
+
 .body-textarea {
     border: none;
     outline: none;
@@ -169,6 +219,42 @@
     min-height: 150px;
     resize: none;
 }
+
+.copy-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.8rem;
+    padding: 6px;
+    color: #999;
+    opacity: 0;
+    transition: opacity 150ms ease, background 150ms ease, color 150ms ease;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.email-area:hover .copy-btn,
+.subject:hover .copy-btn,
+.body:hover .copy-btn {
+    opacity: 1;
+}
+
+.copy-btn:hover {
+    background: #f0f0f0;
+    color: #555;
+}
+
+.email-area .copy-btn {
+    top: calc(50% - 0.5rem);
+    transform: translateY(-50%);
+}
+
 
 .send {
     display: flex;
@@ -196,4 +282,9 @@
 .send-button:hover {
     background: #4162c9;
     box-shadow: 0 0 12px rgba(57, 88, 200, 0.5);
+}
+
+.note {
+    color: #dbdbdb;
+    margin-left: 1rem;
 }

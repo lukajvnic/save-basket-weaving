@@ -83,11 +83,12 @@ function App() {
       <img src={mppPhotoUrl} alt="MPP Photo" /> */}
 
       <div className="heading">
-        <h1>SAVE BASKET WEAVING</h1>
-        <p>Doug Ford is moving to cut OSAP grants. Students have protested, but it will not be enough without directly pressuring local MPPs to publicly oppose the cuts.
-          This site intends to reduce friction for speaking up and ultimately flood our politicians' inboxes, giving them no choice but to stand with us.
-          We have CCed opposition members for accountability.
-        </p>
+        <div className="heading-title">Doug Ford is cutting OSAP grants.</div>
+        <div className="heading-body">
+          Students are protesting, but it's not enough without directly pressuring local MPPs.
+          <br></br>
+          This site intends to make it easy to do exactly that.
+        </div>
       </div>
       <div className="wrapper">
         <div className="wrapper-left">
@@ -108,8 +109,9 @@ function App() {
         </div>
       </div>
       <div className="footer">
-        <p>Email template credits to the <a href="https://wusa.ca/cuts/">Waterloo Undergraduate Student Association (WUSA)</a>
+        <p>Email template credits to the <a href="https://wusa.ca/cuts/" target="_blank">Waterloo Undergraduate Student Association (WUSA)</a>
         </p>
+        <p>Made by <a href="https://www.linkedin.com/in/luka-j-ovanovic/" target="_blank">Luka Jovanovic</a> & <a href="https://www.linkedin.com/in/elaineqian/" target="_blank">Elaine Qian</a></p>
       </div>
     </div>
   )
