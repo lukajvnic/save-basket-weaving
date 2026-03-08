@@ -285,6 +285,7 @@
 }
 
 .note {
-    color: #dbdbdb;
-    margin-left: 1rem;
+    color: #ccc;
+    margin: 0.5rem 0 0 1rem;
+    font-family: 'Figtree', sans-serif;
 }

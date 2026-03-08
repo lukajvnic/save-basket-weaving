@@ -64,6 +64,14 @@ function App() {
     }
   }
 
+  function handleSchoolSelect(mpp) {
+    if (!mpp) return
+    const alreadyPresent = toMPPsRef.current.some(m => m.email === mpp.email)
+    if (!alreadyPresent) {
+      setToMPPs(prev => [...prev, mpp])
+    }
+  }
+
   function handleSend({ to, cc, subject, body }) {
     const toEmails = to.map((p) => p.email).join(',');
     const ccEmails = cc.map((p) => p.email).join(',');
@@ -92,7 +100,7 @@ function App() {
       </div>
       <div className="wrapper">
         <div className="wrapper-left">
-          <Input onGenerate={({ postalCode }) => fetchMpp(postalCode)} onSchoolChange={setSchool} onNameChange={setName} />
+          <Input onGenerate={({ postalCode }) => fetchMpp(postalCode)} onSchoolChange={setSchool} onNameChange={setName} onSchoolSelect={handleSchoolSelect} />
         </div>
         <div className="wrapper-right">
           <Preview

@@ -29,6 +29,8 @@ function Preview({ to, cc, onRemoveTo, onRemoveCc, onAddTo, onAddCc, onSend, sch
     const [copiedEmail, setCopiedEmail] = useState(null);
     const [copiedField, setCopiedField] = useState(null);
     const bodyRef = useRef(null);
+    const prevSchoolRef = useRef('');
+    const prevNameRef = useRef('');
 
     function handleCopyField(field, text) {
         navigator.clipboard.writeText(text);
@@ -70,11 +72,31 @@ function Preview({ to, cc, onRemoveTo, onRemoveCc, onAddTo, onAddCc, onSend, sch
 
     useEffect(() => {
         if (!baseBody) return
-        let computed = baseBody
-        if (school) computed = `As a student at the ${school}, ${computed}`
-        if (name) computed = `${computed}\n\nSincerely,\n${name}`
-        setBody(computed)
-    }, [school, name, baseBody])
+        setBody(baseBody)
+    }, [baseBody])
+
+    useEffect(() => {
+        if (!baseBody) return
+        const articleFor = (s) => /^(university|college)/i.test(s) ? 'the ' : ''
+        const oldPrefix = prevSchoolRef.current ? `As a student at ${articleFor(prevSchoolRef.current)}${prevSchoolRef.current}, ` : ''
+        const newPrefix = school ? `As a student at ${articleFor(school)}${school}, ` : ''
+        prevSchoolRef.current = school
+        setBody(prev => {
+            let updated = (oldPrefix && prev.startsWith(oldPrefix)) ? prev.slice(oldPrefix.length) : prev
+            return newPrefix + updated
+        })
+    }, [school, baseBody])
+
+    useEffect(() => {
+        if (!baseBody) return
+        const oldSuffix = prevNameRef.current ? `\n\nSincerely,\n${prevNameRef.current}` : ''
+        const newSuffix = name ? `\n\nSincerely,\n${name}` : ''
+        prevNameRef.current = name
+        setBody(prev => {
+            let updated = (oldSuffix && prev.endsWith(oldSuffix)) ? prev.slice(0, -oldSuffix.length) : prev
+            return updated + newSuffix
+        })
+    }, [name, baseBody])
 
     useEffect(() => {
         if (bodyRef.current) {
