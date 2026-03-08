@@ -5,3 +5,5 @@ todo:
 - spinny loading wheel on search for postal code
 - mobile version
 - update title
+- add data disclaimer
+- emails sent counter
