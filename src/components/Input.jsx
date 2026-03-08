@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './Input.css'
 import gen from '../assets/generate.png';
-import { schoolMppMap } from '../data/schoolMppMap';
+import { schoolMppMap } from '../../public/schoolMppMap';
 
 const isValidPostalCode = (code) => /^[A-Z]\d[A-Z]\d[A-Z]\d$/.test(code)
 const schoolNames = Object.keys(schoolMppMap)
@@ -32,6 +32,18 @@ function Input({ onGenerate, onSchoolChange, onNameChange, onSchoolSelect }) {
   const [showError, setShowError] = useState(false)
   const [suggestions, setSuggestions] = useState([])
   const [showDropdown, setShowDropdown] = useState(false)
+  const [highlightedIndex, setHighlightedIndex] = useState(-1)
+  const dropdownRef = useRef(null)
+
+  // Reset keyboard cursor when the suggestion list changes
+  useEffect(() => { setHighlightedIndex(-1) }, [suggestions])
+
+  // Scroll highlighted item into view
+  useEffect(() => {
+    if (highlightedIndex >= 0 && dropdownRef.current) {
+      dropdownRef.current.children[highlightedIndex]?.scrollIntoView({ block: 'nearest' })
+    }
+  }, [highlightedIndex])
 
   useEffect(() => {
     if (!postalCode || isValidPostalCode(postalCode)) {
@@ -72,6 +84,7 @@ function Input({ onGenerate, onSchoolChange, onNameChange, onSchoolSelect }) {
     onSchoolSelect?.(schoolMppMap[schoolName])
     setSuggestions([])
     setShowDropdown(false)
+    setHighlightedIndex(-1)
   }
 
   function handleSchoolBlur() {
@@ -84,8 +97,24 @@ function Input({ onGenerate, onSchoolChange, onNameChange, onSchoolSelect }) {
   }
 
   function handleSchoolKeyDown(e) {
-    if (e.key === 'Enter') {
-      if (suggestions.length === 1) {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault()
+      if (!showDropdown) {
+        const filtered = school.trim()
+          ? schoolNames.filter(s => s.toLowerCase().includes(school.toLowerCase()))
+          : schoolNames
+        setSuggestions(filtered)
+        setShowDropdown(filtered.length > 0)
+      } else {
+        setHighlightedIndex(prev => Math.min(prev + 1, suggestions.length - 1))
+      }
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault()
+      setHighlightedIndex(prev => Math.max(prev - 1, 0))
+    } else if (e.key === 'Enter') {
+      if (highlightedIndex >= 0 && suggestions[highlightedIndex]) {
+        selectSchool(suggestions[highlightedIndex])
+      } else if (suggestions.length === 1) {
         selectSchool(suggestions[0])
       } else if (schoolMppMap[school]) {
         onSchoolSelect?.(schoolMppMap[school])
@@ -93,6 +122,7 @@ function Input({ onGenerate, onSchoolChange, onNameChange, onSchoolSelect }) {
       }
     } else if (e.key === 'Escape') {
       setShowDropdown(false)
+      setHighlightedIndex(-1)
     }
   }
 
@@ -157,9 +187,14 @@ function Input({ onGenerate, onSchoolChange, onNameChange, onSchoolSelect }) {
           <ChevronIcon />
         </button>
         {showDropdown && (
-          <div className="school-dropdown">
-            {suggestions.map(s => (
-              <div key={s} className="school-option" onMouseDown={() => selectSchool(s)}>
+          <div className="school-dropdown" ref={dropdownRef}>
+            {suggestions.map((s, i) => (
+              <div
+                key={s}
+                className={`school-option${i === highlightedIndex ? ' highlighted' : ''}`}
+                onMouseDown={() => selectSchool(s)}
+                onMouseEnter={() => setHighlightedIndex(i)}
+              >
                 {highlightMatch(s, school)}
               </div>
             ))}

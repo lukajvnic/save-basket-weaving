@@ -178,7 +178,8 @@
     font-family: inherit;
 }
 
-.school-option:hover {
+.school-option:hover,
+.school-option.highlighted {
     background: #f5f5f5;
 }
 
