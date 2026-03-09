@@ -1,10 +1,15 @@
-# OSAP Protest Email Generator
+# Save Basket Weaving
 
 Recently, the government of Ontario has announced that they're looking heavily cut OSAP grants. Grants are already designed to be given to students with the lowest household incomes, so this cut is essentially a direct attack on those who need it most.
 
 Various universities across Ontario have lead protests against this cut, but we strongly believe that direct pressure on Members of Provincial Parliament is just as important in terms of reversing these changes.
 
 We made this website with the intention of making the barrier for students to contact their local representatives as low as possible.
+
+## Why the Name?
+
+https://www.youtube.com/shorts/iFB2cYOU3e4
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/iFB2cYOU3e4/0.jpg)](https://www.youtube.com)
 
 ## Tech Stack
 
