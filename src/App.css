@@ -93,13 +93,25 @@
 /* ── Intro keyframes ────────────────────────────────────── */
 
 @keyframes intro-fade {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes intro-float {
-    from { opacity: 0; transform: translateY(14px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .heading p {
@@ -128,4 +140,51 @@ a:visited {
 a:hover {
     color: #333;
     text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+    .app:not(.settled) .heading {
+        transform: translateY(calc(50vh - 10rem));
+    }
+
+    .app:not(.settled) .heading-title {
+        font-size: 2rem;
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+    }
+
+    .app:not(.settled) .heading-body {
+        font-size: 1.1rem;
+        margin: 0 2rem;
+    }
+
+    .app.settled .heading-title {
+        font-size: 1.75rem;
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+    }
+
+    .app.settled .heading-body {
+        font-size: .85rem;
+        margin: 0 3rem;
+    }
+
+    .wrapper {
+        grid-template-columns: 1fr;
+        margin: 1rem;
+    }
+
+    .wrapper-left {
+        padding: 1.5rem 1rem;
+    }
+
+    .wrapper-right {
+        border-left: none;
+        padding: 0;
+        margin-top: 2rem;
+    }
+
+    .heading p {
+        margin: 1rem 1.5rem;
+    }
 }

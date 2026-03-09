@@ -6,6 +6,12 @@
     padding-top: 3rem;
 }
 
+@media (max-width: 1024px) {
+    .input-container {
+        padding-top: 0;
+    }
+}
+
 .field-row {
     position: relative;
 }

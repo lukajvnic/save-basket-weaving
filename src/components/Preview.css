@@ -164,8 +164,15 @@
     padding: 0;
     margin: 0;
     height: 24px;
-    min-width: 100px;
+    width: 2px;
+    flex: none;
+    transition: min-width 0.2s, flex 0.2s;
+}
+
+.tag-input:focus,
+.tag-input.has-text {
     flex: 1;
+    min-width: 100px;
 }
 
 .tag-text {
@@ -247,8 +254,9 @@
 .subject:hover .copy-btn,
 .body:hover .copy-btn {
     opacity: 1;
-    color: #999;;
-    
+    color: #999;
+    ;
+
 }
 
 .copy-btn:hover {

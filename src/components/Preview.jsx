@@ -37,6 +37,8 @@ function Preview({ to, cc, onRemoveTo, onRemoveCc, onAddTo, onAddCc, onSend, sch
     const bodyRef = useRef(null);
     const prevSchoolRef = useRef('');
     const prevNameRef = useRef('');
+    const toInputRef = useRef(null);
+    const ccInputRef = useRef(null);
 
     function handleCopyField(field, text) {
         navigator.clipboard.writeText(text);
@@ -123,9 +125,9 @@ function Preview({ to, cc, onRemoveTo, onRemoveCc, onAddTo, onAddCc, onSend, sch
                     <div className="email-area-text">
                         To:
                     </div>
-                    <div className="email-area-tags">
+                    <div className="email-area-tags" onClick={() => toInputRef.current?.focus()}>
                         {to.map((politician, index) => (
-                            <span className={`tag ${removingTo === index ? 'tag-removing' : ''}`} key={index} onClick={() => handleCopyEmail(politician.email)}>
+                            <span className={`tag ${removingTo === index ? 'tag-removing' : ''}`} key={index} onClick={(e) => { e.stopPropagation(); handleCopyEmail(politician.email); }}>
                                 <span className="tag-tooltip">{politician.email}{copiedEmail === politician.email && ' (copied)'}</span>
                                 <span className="tag-pfp">
                                     <img className="tag-pfp-img" src={politician.photoUrl} alt={politician.name} />
@@ -135,7 +137,8 @@ function Preview({ to, cc, onRemoveTo, onRemoveCc, onAddTo, onAddCc, onSend, sch
                             </span>
                         ))}
                         <input
-                            className="tag-input"
+                            ref={toInputRef}
+                            className={`tag-input ${toInput ? 'has-text' : ''}`}
                             type="text"
                             value={toInput}
                             onChange={(e) => setToInput(e.target.value)}
@@ -159,9 +162,9 @@ function Preview({ to, cc, onRemoveTo, onRemoveCc, onAddTo, onAddCc, onSend, sch
                     <div className="email-area-text">
                         Cc:
                     </div>
-                    <div className="email-area-tags">
+                    <div className="email-area-tags" onClick={() => ccInputRef.current?.focus()}>
                         {cc.map((politician, index) => (
-                            <span className={`tag ${removingCc === index ? 'tag-removing' : ''}`} key={index} onClick={() => handleCopyEmail(politician.email)}>
+                            <span className={`tag ${removingCc === index ? 'tag-removing' : ''}`} key={index} onClick={(e) => { e.stopPropagation(); handleCopyEmail(politician.email); }}>
                                 <span className="tag-tooltip">{politician.email}{copiedEmail === politician.email && ' (copied)'}</span>
                                 <span className="tag-pfp">
                                     <img className="tag-pfp-img" src={politician.photoUrl} alt={politician.name} />
@@ -171,7 +174,8 @@ function Preview({ to, cc, onRemoveTo, onRemoveCc, onAddTo, onAddCc, onSend, sch
                             </span>
                         ))}
                         <input
-                            className="tag-input"
+                            ref={ccInputRef}
+                            className={`tag-input ${ccInput ? 'has-text' : ''}`}
                             type="text"
                             value={ccInput}
                             onChange={(e) => setCcInput(e.target.value)}
