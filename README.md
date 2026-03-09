@@ -4,3 +4,4 @@ todo:
 - add data disclaimer
 - emails sent counter (just backed for now)
 - check duplicate emails
+- fix copy -> checkmark, give column for body copy buttons

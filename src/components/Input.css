@@ -3,7 +3,7 @@
     flex-direction: column;
     font-family: 'Figtree', sans-serif;
     gap: 2.5rem;
-    padding-top: 5rem;
+    padding-top: 3rem;
 }
 
 .field-row {
@@ -12,7 +12,8 @@
 
 .field {
     position: relative;
-    padding-top: 1rem; /* 1.25 rem */
+    padding-top: 1rem;
+    /* 1.25 rem */
 }
 
 .field input {
@@ -37,7 +38,8 @@
 .field label {
     position: absolute;
     left: 0;
-    top: 1.25rem; /* 1.5 rem */
+    top: 1.25rem;
+    /* 1.5 rem */
     color: #bbb;
     font-size: 1rem;
     font-family: inherit;
@@ -48,8 +50,8 @@
         color 0.2s ease;
 }
 
-.field input:focus ~ label,
-.field input:not(:placeholder-shown) ~ label {
+.field input:focus~label,
+.field input:not(:placeholder-shown)~label {
     top: 0;
     font-size: 0.7rem;
     color: #777;
@@ -126,10 +128,10 @@
 }
 
 .disclaimer {
-    color: #ccc;
+    color: #777;
     font-family: 'Figtree', sans-serif;
     font-size: 0.9rem;
-    /* text-align: right; */
+    text-align: center;
 }
 
 .school-arrow {

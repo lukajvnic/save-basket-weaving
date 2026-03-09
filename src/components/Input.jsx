@@ -143,6 +143,14 @@ function Input({ onGenerate, onSchoolChange, onNameChange, onSchoolSelect }) {
   return (
     <div className="input-container">
 
+      <div className="disclaimer">
+        The fields below are optional,
+        <br></br>
+        but help us get your email to the right people.
+        <br></br>
+        Don't worry, nothing is being saved.
+      </div>
+
       <div className="field-row">
         <div className="field">
           <input
@@ -211,10 +219,6 @@ function Input({ onGenerate, onSchoolChange, onNameChange, onSchoolSelect }) {
           onChange={(e) => { setName(e.target.value); onNameChange?.(e.target.value); }}
         />
         <label htmlFor="name">Name</label>
-      </div>
-
-      <div className="disclaimer">
-        Privacy Notice:<br></br>None of the information you input is shared or seen by us.<br></br>???? what to write
       </div>
 
     </div>
