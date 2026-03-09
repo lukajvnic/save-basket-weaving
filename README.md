@@ -2,11 +2,11 @@
 
 Recently, the government of Ontario has announced that they're looking heavily cut OSAP grants. Grants are already designed to be given to students with the lowest household incomes, so this cut is essentially a direct attack on those who need it most.
 
-Various universities across Ontario have lead protests against this cut, but we strongly believe that direct pressure on local representatives is just as important in terms of reversing these changes.
+Various universities across Ontario have lead protests against this cut, but we strongly believe that direct pressure on Members of Provincial Parliament is just as important in terms of reversing these changes.
 
 We made this website with the intention of making the barrier for students to contact their local representatives as low as possible.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |-------|------------|
@@ -16,7 +16,7 @@ We made this website with the intention of making the barrier for students to co
 | Data Source | OpenNorth Represent API |
 | Analytics | Vercel Analytics |
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js 20.x or later
@@ -44,14 +44,14 @@ The app will be available at `http://localhost:5173`
 npm run build
 ```
 
-## 📊 How It Works
+## How It Works
 
 1. **Input** — Users enter their postal code or select their university/college from a dropdown.
 2. **Data Fetching** — The serverless API (`/api/mpp`) interfaces with the OpenNorth Represent API to find the MPP for the given postal code.
 3. **Template Generation** — The app dynamically updates an email template (sourced from the Waterloo Undergraduate Student Association) with the student's name and school context.
 4. **Action** — The "Send" button constructs a comprehensive `mailto:` link, opening the user's default email client with everything pre-filled and ready to send.
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 osap-emailing/
@@ -69,7 +69,8 @@ osap-emailing/
 │   └── package.json
 ```
 
-## 👤 Authors
+## Authors
 
 **Luka Jovanovic** — [lukajvnic.com](https://lukajvnic.com)
-**Elaine Qian** — [https://www.linkedin.com/in/elaineqian/](https://www.linkedin.com/in/elaineqian/)
+
+**Elaine Qian**
