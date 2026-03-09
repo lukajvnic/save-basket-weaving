@@ -33,6 +33,7 @@ function Input({ onGenerate, onSchoolChange, onNameChange, onSchoolSelect }) {
   const [suggestions, setSuggestions] = useState([])
   const [showDropdown, setShowDropdown] = useState(false)
   const [highlightedIndex, setHighlightedIndex] = useState(-1)
+  const [isGenerating, setIsGenerating] = useState(false)
   const dropdownRef = useRef(null)
 
   // Reset keyboard cursor when the suggestion list changes
@@ -54,13 +55,18 @@ function Input({ onGenerate, onSchoolChange, onNameChange, onSchoolSelect }) {
     return () => clearTimeout(timer)
   }, [postalCode])
 
-  function handleGenerate() {
+  async function handleGenerate() {
     if (!isValidPostalCode(postalCode)) {
       setShowError(true)
       return
     }
     setShowError(false)
-    onGenerate({ postalCode, school, name })
+    setIsGenerating(true)
+    try {
+      await onGenerate({ postalCode, school, name })
+    } finally {
+      setIsGenerating(false)
+    }
   }
 
   function handleSchoolChange(value) {
@@ -169,8 +175,13 @@ function Input({ onGenerate, onSchoolChange, onNameChange, onSchoolSelect }) {
           <button
             className={`generate-btn${postalCode ? ' visible' : ''}`}
             onClick={handleGenerate}
+            disabled={isGenerating}
           >
-            <img src={gen} className="generate-icon" alt="Generate" />
+            {isGenerating ? (
+              <div className="spinner"></div>
+            ) : (
+              <img src={gen} className="generate-icon" alt="Generate" />
+            )}
           </button>
         </div>
       </div>
