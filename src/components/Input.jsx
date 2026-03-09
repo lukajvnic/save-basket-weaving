@@ -34,6 +34,7 @@ function Input({ onGenerate, onSchoolChange, onNameChange, onSchoolSelect }) {
   const [showDropdown, setShowDropdown] = useState(false)
   const [highlightedIndex, setHighlightedIndex] = useState(-1)
   const [isGenerating, setIsGenerating] = useState(false)
+  const [apiError, setApiError] = useState(false)
   const dropdownRef = useRef(null)
 
   // Reset keyboard cursor when the suggestion list changes
@@ -61,9 +62,12 @@ function Input({ onGenerate, onSchoolChange, onNameChange, onSchoolSelect }) {
       return
     }
     setShowError(false)
+    setApiError(false)
     setIsGenerating(true)
     try {
       await onGenerate({ postalCode, school, name })
+    } catch {
+      setApiError(true)
     } finally {
       setIsGenerating(false)
     }
@@ -164,11 +168,11 @@ function Input({ onGenerate, onSchoolChange, onNameChange, onSchoolSelect }) {
             id="postalCode"
             placeholder=" "
             value={postalCode}
-            onChange={(e) => setPostalCode(e.target.value.replace(/\s/g, '').toUpperCase())}
+            onChange={(e) => { setPostalCode(e.target.value.replace(/\s/g, '').toUpperCase()); setApiError(false) }}
           />
           <label htmlFor="postalCode">Postal code</label>
-          <div className={`postal-error${showError ? ' visible' : ''}`}>
-            Please input a valid postal code in Ontario
+          <div className={`postal-error${(showError || apiError) ? ' visible' : ''}`}>
+            {apiError ? 'Error fetching postal code' : 'Please input a valid postal code in Ontario'}
           </div>
         </div>
         <div className="button-container">

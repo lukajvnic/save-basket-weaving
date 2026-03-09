@@ -5,21 +5,15 @@ import { track } from '@vercel/analytics';
 import './App.css'
 
 function App() {
-  // const [mppName, setMPPName] = useState('');
-  // const [mppEmail, setMPPEmail] = useState('');
-  // const [mppParty, setMPPParty] = useState('');
-  // const [mppDistrict, setMPPDistrict] = useState('');
-  // const [mppPhotoUrl, setMPPPhotoUrl] = useState(null);
   const [school, setSchool] = useState('');
   const [name, setName] = useState('');
   const [settled, setSettled] = useState(false);
 
   useEffect(() => {
-    // title fades in: ~0-750ms, desc floats in: ~850-1500ms, wait 1s → 2500ms
     const timer = setTimeout(() => {
       window.scrollTo(0, 0)
       setSettled(true)
-    }, 2500)
+    }, 4000)
     return () => clearTimeout(timer)
   }, [])
   const fetchedCodes = useRef(new Map());
@@ -71,7 +65,7 @@ function App() {
       }
     } catch (err) {
       console.log("Error fetching postal code");
-      // include popup error logic here
+      throw err
     }
   }
 
