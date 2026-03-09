@@ -106,12 +106,21 @@ function Preview({ to, cc, onRemoveTo, onRemoveCc, onAddTo, onAddCc, onSend, sch
         })
     }, [name, baseBody])
 
-    useEffect(() => {
+    const adjustHeight = () => {
         if (bodyRef.current) {
-            bodyRef.current.style.height = 'auto'
-            bodyRef.current.style.height = bodyRef.current.scrollHeight + 'px'
+            bodyRef.current.style.height = 'auto';
+            bodyRef.current.style.height = bodyRef.current.scrollHeight + 'px';
         }
-    }, [body])
+    };
+
+    useEffect(() => {
+        adjustHeight();
+    }, [body]);
+
+    useEffect(() => {
+        window.addEventListener('resize', adjustHeight);
+        return () => window.removeEventListener('resize', adjustHeight);
+    }, []);
 
     return (
         <div className="main">
