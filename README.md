@@ -9,7 +9,6 @@ We made this website with the intention of making the barrier for students to co
 ## Why the Name?
 
 https://www.youtube.com/shorts/iFB2cYOU3e4
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/iFB2cYOU3e4/0.jpg)](https://www.youtube.com)
 
 ## Tech Stack
 
