@@ -169,6 +169,7 @@ function Input({ onGenerate, onSchoolChange, onNameChange, onSchoolSelect }) {
             placeholder=" "
             value={postalCode}
             onChange={(e) => { setPostalCode(e.target.value.replace(/\s/g, '').toUpperCase()); setApiError(false) }}
+            onKeyDown={(e) => { if (e.key === 'Enter') handleGenerate() }}
           />
           <label htmlFor="postalCode">Postal code</label>
           <div className={`postal-error${(showError || apiError) ? ' visible' : ''}`}>
