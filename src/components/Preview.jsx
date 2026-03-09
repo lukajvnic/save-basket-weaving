@@ -8,6 +8,12 @@ const CopyIcon = () => (
     </svg>
 );
 
+const CheckIcon = () => (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="20,6 9,17 4,12" />
+    </svg>
+);
+
 /**
  * @typedef {Object} Representative
  * @property {string} name
@@ -146,7 +152,7 @@ function Preview({ to, cc, onRemoveTo, onRemoveCc, onAddTo, onAddCc, onSend, sch
                         />
                     </div>
                     <button className="copy-btn" onClick={() => handleCopyField('to', to.map(p => p.email).join(', '))}>
-                        {copiedField === 'to' ? 'Copied!' : <CopyIcon />}
+                        {copiedField === 'to' ? <CheckIcon /> : <CopyIcon />}
                     </button>
                 </div>
                 <div className="email-area cc">
@@ -182,20 +188,20 @@ function Preview({ to, cc, onRemoveTo, onRemoveCc, onAddTo, onAddCc, onSend, sch
                         />
                     </div>
                     <button className="copy-btn" onClick={() => handleCopyField('cc', cc.map(p => p.email).join(', '))}>
-                        {copiedField === 'cc' ? 'Copied!' : <CopyIcon />}
+                        {copiedField === 'cc' ? <CheckIcon /> : <CopyIcon />}
                     </button>
                 </div>
                 <div className="subject">
                     <span>Subject: </span>
                     <input className="subject-input" type="text" value={subject} onChange={(e) => setSubject(e.target.value)} />
                     <button className="copy-btn" onClick={() => handleCopyField('subject', subject)}>
-                        {copiedField === 'subject' ? 'Copied!' : <CopyIcon />}
+                        {copiedField === 'subject' ? <CheckIcon /> : <CopyIcon />}
                     </button>
                 </div>
                 <div className="body">
                     <textarea ref={bodyRef} className="body-textarea" value={body} onChange={(e) => setBody(e.target.value)} />
                     <button className="copy-btn copy-btn-body" onClick={() => handleCopyField('body', body)}>
-                        {copiedField === 'body' ? 'Copied!' : <CopyIcon />}
+                        {copiedField === 'body' ? <CheckIcon /> : <CopyIcon />}
                     </button>
                 </div>
                 <div className="send">

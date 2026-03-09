@@ -5,13 +5,13 @@ export const schoolMppMap = {
     "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/Chris-Scott.jpg",
     "postalCode": "P6A2G4"
   },
-  "Algonquin College": {  // otawa campus
+  "Algonquin College": {
     "name": "Chandra Pasma",
     "email": "cpasma-qp@ndp.on.ca",
     "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/Chandra_Pasma.png",
     "postalCode": "K2G1V8"
   },
-  "Boréal College": { // sudbury location mpp, has multiple locations??
+  "Boréal College": {
     "name": "Jamie West",
     "email": "jwest-qp@ndp.on.ca",
     "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/Jamie-West.jpeg",
@@ -30,7 +30,7 @@ export const schoolMppMap = {
     "postalCode": "P3A3V8"
   },
   "Canadore College": {
-    "name": "Hon. Victor Fedeli",
+    "name": "Victor Fedeli",
     "email": "vic.fedeli@pc.ola.org",
     "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/victor_fedeli_0.jpg",
     "postalCode": "P1B8K9"
@@ -41,33 +41,33 @@ export const schoolMppMap = {
     "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/Catherine-McKenney.jpg",
     "postalCode": "K1S5B6"
   },
-  "Centennial College": { // main scarborough campus
+  "Centennial College": {
     "name": "Andrea Hazell",
     "email": "ahazell.mpp.co@liberal.ola.org",
     "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/Andrea_Hazell_2.jpg",
     "postalCode": "M1G3T8"
   },
-  "Conestoga College": { // main kitchener campus
+  "Conestoga College": {
     "name": "Jess Dixon",
     "email": "jess.dixon@pc.ola.org",
     "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/Jess_Dixon.png",
     "postalCode": "N2G4M4"
   },
   "Confederation College": {
-    "name": "Hon. Kevin Holland",
+    "name": "Kevin Holland",
     "email": "kevin.holland@pc.ola.org",
     "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/Kevin_Holland.jpg",
     "postalCode": "P7C4W1"
   },
   "Durham College": {
-    "name": "Hon. Todd J. McCarthy",
+    "name": "Todd J. McCarthy",
     "email": "todd.mccarthy@pc.ola.org",
     "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/Todd_McCarthy.png",
     "postalCode": "L1G0C5"
   },
   "Fanshawe College": {
     "name": "Teresa J. Armstrong",
-    "email": "", // no email listed???
+    "email": "tarmstrong-co@ndp.on.ca",
     "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/teresa_armstrong_0.jpg",
     "postalCode": "N5Y5R6"
   },
@@ -84,15 +84,15 @@ export const schoolMppMap = {
     "postalCode": "M5T2T9"
   },
   "Georgian College": {
-    "name": "Hon. Doug Downey",
+    "name": "Doug Downey",
     "email": "doug.downey@pc.ola.org",
     "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/Doug_Downey.jpg",
     "postalCode": "L4M3X9"
   },
-  "Humber College": { // its doug ford?? -- implement the case they pick humber and nothing shows up?
-    "name": "",
-    "email": "",
-    "photoUrl": "",
+  "Humber College": {
+    "name": "Douggie",
+    "email": "doug.fordco@pc.ola.org",
+    "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/doug_ford.jpg",
     "postalCode": "M9W5L7"
   },
   "La Cité College": {
@@ -134,7 +134,7 @@ export const schoolMppMap = {
   "Michener Institute": {
     "name": "Jessica Bell",
     "email": "jbell-qp@ndp.on.ca",
-    "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/Jessica_Bell.jpg",
+    "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/jessica_bell.jpg",
     "postalCode": "M5T1V4"
   },
   "Mohawk College": {
@@ -156,13 +156,13 @@ export const schoolMppMap = {
     "postalCode": "L2E6T2"
   },
   "Nipissing University": {
-    "name": "Hon. Victor Fedeli",
+    "name": "Victor Fedeli",
     "email": "vic.fedeli@pc.ola.org",
     "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/victor_fedeli_0.jpg",
     "postalCode": "P1B8L7"
   },
   "Northern College": {
-    "name": "Hon. George Pirie",
+    "name": "George Pirie",
     "email": "george.pirie@pc.ola.org",
     "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/George_Pirie.png",
     "postalCode": "P0N1H0"
@@ -174,7 +174,7 @@ export const schoolMppMap = {
     "postalCode": "M5T1W1"
   },
   "Ontario Tech University": {
-    "name": "Hon. Todd J. McCarthy",
+    "name": "Todd J. McCarthy",
     "email": "todd.mccarthy@pc.ola.org",
     "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/Todd_McCarthy.png",
     "postalCode": "L1G0C5"
@@ -184,12 +184,6 @@ export const schoolMppMap = {
     "email": "thsu.mpp.co@liberal.ola.org",
     "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/Ted_Hsu.jpg",
     "postalCode": "K7L3N6"
-  },
-  "Ridgetown Campus": { // separate college afilliated w uofguelph???
-    "name": "Hon. Trevor Jones",
-    "email": "trevor.jones@pc.ola.org",
-    "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/Trevor_Jones.png",
-    "postalCode": "N0P2C0"
   },
   "Royal Military College of Canada": {
     "name": "Ted Hsu",
@@ -210,7 +204,7 @@ export const schoolMppMap = {
     "postalCode": "M2J2X5"
   },
   "Sheridan College": {
-    "name": "Hon. Stephen Crawford",
+    "name": "Stephen Crawford",
     "email": "stephen.crawford@pc.ola.org",
     "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/stephen_crawford.jpg",
     "postalCode": "L6H2L1"
@@ -241,7 +235,7 @@ export const schoolMppMap = {
   },
   "Université de Hearst": {
     "name": "Guy Bourgouin",
-    "email": "", // no email listed???
+    "email": "gbourgouin-co@ndp.on.ca",
     "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/Guy_Bourgouin.jpg",
     "postalCode": "P0L1N0"
   },
@@ -263,11 +257,23 @@ export const schoolMppMap = {
     "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/Catherine-McKenney.jpg",
     "postalCode": "K1N6N5"
   },
-  "University of Toronto": { // diff campuses????
+  "University of Toronto St. George": {
     "name": "Jessica Bell",
     "email": "jbell-qp@ndp.on.ca",
-    "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/Jessica_Bell.jpg",
+    "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/jessica_bell.jpg",
     "postalCode": "M5S1A1"
+  },
+  "University of Toronto Scarborough": {
+    "name": "Vijay Thanigasalam",
+    "email": "vijay.thanigasalam@pc.ola.org",
+    "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/vijay_thanigasalam_v1.jpg",
+    "postalCode": "M1C1A4"
+  },
+  "University of Toronto Mississauga": {
+    "name": "Sheref Sabawy",
+    "email": "sheref.sabawy@pc.ola.org",
+    "photoUrl": "https://www.ola.org/sites/default/files/member/profile-photo/sheref_sabawy.jpg",
+    "postalCode": "L5L1C6"
   },
   "University of Waterloo": {
     "name": "Catherine Fife",

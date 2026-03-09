@@ -212,6 +212,8 @@
     outline: none;
     background: none;
     padding: 0;
+    padding-right: 2rem;
+    box-sizing: border-box;
     margin: 0;
     font: inherit;
     color: inherit;
@@ -230,6 +232,8 @@
     cursor: pointer;
     font-size: 0.8rem;
     padding: 6px;
+    background: #f8f8f8;
+    box-shadow: 0 0 12px #eee;
     color: #999;
     opacity: 0;
     transition: opacity 150ms ease, background 150ms ease, color 150ms ease;
@@ -243,6 +247,8 @@
 .subject:hover .copy-btn,
 .body:hover .copy-btn {
     opacity: 1;
+    color: #999;;
+    
 }
 
 .copy-btn:hover {
