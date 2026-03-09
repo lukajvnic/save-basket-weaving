@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import Preview from './components/Preview'
 import Input from './components/Input'
+import { track } from '@vercel/analytics';
 import './App.css'
 
 function App() {
@@ -79,6 +80,9 @@ function App() {
     if (ccEmails) parts.push(`cc=${encodeURIComponent(ccEmails)}`);
     if (subject) parts.push(`subject=${encodeURIComponent(subject)}`);
     if (body) parts.push(`body=${encodeURIComponent(body)}`);
+
+    track('send_email_clicked');
+
     window.location.href = `mailto:${toEmails}?${parts.join('&')}`;
   }
 
