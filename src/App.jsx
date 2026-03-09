@@ -110,8 +110,8 @@ function App() {
             name={name}
             onRemoveTo={(index) => setToMPPs(toMPPs.filter((_, i) => i !== index))}
             onRemoveCc={(index) => setCcMPPs(ccMPPs.filter((_, i) => i !== index))}
-            onAddTo={(entry) => setToMPPs([...toMPPs, entry])}
-            onAddCc={(entry) => setCcMPPs([...ccMPPs, entry])}
+            onAddTo={(entry) => !toMPPs.some(m => m.email === entry.email) && setToMPPs([...toMPPs, entry])}
+            onAddCc={(entry) => !ccMPPs.some(m => m.email === entry.email) && setCcMPPs([...ccMPPs, entry])}
             onSend={handleSend}
           />
         </div>

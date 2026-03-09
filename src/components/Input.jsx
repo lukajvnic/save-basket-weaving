@@ -146,7 +146,7 @@ function Input({ onGenerate, onSchoolChange, onNameChange, onSchoolSelect }) {
       <div className="disclaimer">
         The fields below are optional,
         <br></br>
-        but help us get your email to the right people.
+        but help you get your email to the right people.
         <br></br>
         Don't worry, nothing is being saved.
       </div>
