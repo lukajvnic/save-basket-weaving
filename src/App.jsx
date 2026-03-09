@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Preview from './components/Preview'
 import Input from './components/Input'
 import { track } from '@vercel/analytics';
@@ -12,6 +12,16 @@ function App() {
   // const [mppPhotoUrl, setMPPPhotoUrl] = useState(null);
   const [school, setSchool] = useState('');
   const [name, setName] = useState('');
+  const [settled, setSettled] = useState(false);
+
+  useEffect(() => {
+    // title fades in: ~0-750ms, desc floats in: ~850-1500ms, wait 1s → 2500ms
+    const timer = setTimeout(() => {
+      window.scrollTo(0, 0)
+      setSettled(true)
+    }, 2500)
+    return () => clearTimeout(timer)
+  }, [])
   const fetchedCodes = useRef(new Map());
   const [toMPPs, setToMPPs] = useState([
     {
@@ -87,7 +97,7 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <div className={`app${settled ? ' settled' : ''}`}>
       {/* <div>MPP Name: {mppName}</div>
       <div>MPP Email: {mppEmail}</div>
       <div>MPP Party: {mppParty}</div>
@@ -123,7 +133,7 @@ function App() {
       <div className="footer">
         <p>Email template credits to the <a href="https://wusa.ca/cuts/" target="_blank">Waterloo Undergraduate Student Association (WUSA)</a>
         </p>
-        <p>Made by <a href="https://www.linkedin.com/in/luka-j-ovanovic/" target="_blank">Luka Jovanovic</a> & <a href="https://www.linkedin.com/in/elaineqian/" target="_blank">Elaine Qian</a></p>
+        <p>🧺 Made by <a href="https://www.linkedin.com/in/luka-j-ovanovic/" target="_blank">Luka Jovanovic</a> & <a href="https://www.linkedin.com/in/elaineqian/" target="_blank">Elaine Qian</a></p>
       </div>
     </div>
   )
