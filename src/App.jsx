@@ -5,21 +5,11 @@ import { track } from '@vercel/analytics';
 import './App.css'
 
 function App() {
-  // const [mppName, setMPPName] = useState('');
-  // const [mppEmail, setMPPEmail] = useState('');
-  // const [mppParty, setMPPParty] = useState('');
-  // const [mppDistrict, setMPPDistrict] = useState('');
-  // const [mppPhotoUrl, setMPPPhotoUrl] = useState(null);
   const [school, setSchool] = useState('');
   const [name, setName] = useState('');
   const [settled, setSettled] = useState(false);
 
   useEffect(() => {
-    // Intro animation timing:
-    //   0.10s – title starts fading in  (0.65s duration → done ~0.75s)
-    //   0.85s – desc starts floating in (0.65s duration → done ~1.50s)
-    //   + 4s wait on the splash screen
-    //   = ~5.5s before settling into the main layout
     const timer = setTimeout(() => {
       window.scrollTo(0, 0)
       setSettled(true)
@@ -75,7 +65,7 @@ function App() {
       }
     } catch (err) {
       console.log("Error fetching postal code");
-      // include popup error logic here
+      throw err
     }
   }
 
