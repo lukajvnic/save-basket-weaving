@@ -32,8 +32,6 @@
     transition: font-size 0.45s ease;
 }
 
-/* ── Intro state (before .settled) ─────────────────────── */
-
 .app:not(.settled) {
     overflow: hidden;
     height: 100vh;
@@ -62,8 +60,6 @@
     pointer-events: none;
 }
 
-/* ── Settled state ──────────────────────────────────────── */
-
 .app.settled .heading {
     transform: translateY(0);
 }
@@ -89,8 +85,6 @@
     transform: translateY(0);
     transition: opacity 0.5s ease 0.25s, transform 0.5s ease 0.25s;
 }
-
-/* ── Intro keyframes ────────────────────────────────────── */
 
 @keyframes intro-fade {
     from { opacity: 0; }

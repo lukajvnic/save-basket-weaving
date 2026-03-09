@@ -15,11 +15,15 @@ function App() {
   const [settled, setSettled] = useState(false);
 
   useEffect(() => {
-    // title fades in: ~0-750ms, desc floats in: ~850-1500ms, wait 1s → 2500ms
+    // Intro animation timing:
+    //   0.10s – title starts fading in  (0.65s duration → done ~0.75s)
+    //   0.85s – desc starts floating in (0.65s duration → done ~1.50s)
+    //   + 4s wait on the splash screen
+    //   = ~5.5s before settling into the main layout
     const timer = setTimeout(() => {
       window.scrollTo(0, 0)
       setSettled(true)
-    }, 2500)
+    }, 4000)
     return () => clearTimeout(timer)
   }, [])
   const fetchedCodes = useRef(new Map());
