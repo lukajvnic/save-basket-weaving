@@ -125,9 +125,9 @@ function App() {
         </div>
       </div>
       <div className="footer">
-        <p>Email template credits to the <a href="https://wusa.ca/cuts/" target="_blank">Waterloo Undergraduate Student Association (WUSA)</a>
+        <p>Learn more about the cuts at <a href="https://wusa.ca/cuts/" target="_blank">Waterloo Undergraduate Student Association (WUSA)</a>
         </p>
-        <p>🧺 Made by <a href="https://www.linkedin.com/in/luka-j-ovanovic/" target="_blank">Luka Jovanovic</a> & <a href="https://www.linkedin.com/in/elaineqian/" target="_blank">Elaine Qian</a></p>
+        <p>🧺 Made by <a href="https://www.linkedin.com/in/luka-j-ovanovic/" target="_blank">Luka Jovanovic</a> & <a href="https://www.linkedin.com/in/elaineqian/" target="_blank">Elaine Qian</a> (<a target="_blank" href="https://github.com/lukajvnic/save-basket-weaving">Github</a>)</p>
       </div>
     </div>
   )
